@@ -50,7 +50,11 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        if($book->update($request->all())) {
+            return response()->json(['message' => 'Libro actualizado correctamente'], 200);
+        }
+
+        return response()->json(['message' => 'Error al actualizado el libro'], 404);
     }
 
     /**
